@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
   aim="thankyou";
   accno="account num pls";
+  // acno="account num pls";
+
   pswd="";
 
   accountDetails:any= {
@@ -33,10 +35,13 @@ pwdChange(event:any){
   console.log(this.pswd);
 }
 
-login(){
+// login(a:any,p:any){
+  login(){
   alert("Login clicked")
   var acno=this.accno;
+  // var acno=a.value;
   var pswd=this.pswd;
+  // var pswd=p.value;
   var users=this.accountDetails;
   if(acno in users){
     if(pswd==users[acno]["password"]){
