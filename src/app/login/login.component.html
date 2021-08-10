@@ -11,18 +11,18 @@
 
             <!-- <input id="accnotext" type="text" class="text" [value]="accno" (change)="accChange($event)" placeholder="Account number"><br><br> -->
             <!-- <input id="accnotext" type="text" class="text" [value]="acno" #accno placeholder="Account number"><br><br> -->
-            <input id="accnotext" type="text" class="text" [value]="accno" [(ngModel)]="accno" placeholder="Account number"><br><br>
+            <input id="accnotext" type="text" class="text" [value]="accno" [(ngModel)]="accno" name="acno" placeholder="Account number"><br><br>
             <!-- <input id="pwdtext" type="password" class="text"  (change)="pwdChange($event)"  placeholder="Password" ><br> <br> -->
 
-            <input id="pwdtext" type="password" class="text" [(ngModel)]="pswd" placeholder="Password" ><br> <br>
+            <input id="pwdtext" type="password" class="text" [(ngModel)]="pswd" name="pswd" placeholder="Password" ><br> <br>
             <!-- <input id="pwdtext" type="password" class="text" #pswd placeholder="Password" ><br> <br> -->
             <input type="button"  (click)="login()" value="Log In" class="button butefct"> <br>
 
             <!-- <input type="button"  (click)="login(accno,pswd)" value="Log In" class="button butefct"> <br> -->
 
-                <a class="textfp" href="#">Forgotten password?</a>
+                <a class="textfp" routerLink="register">Forgotten password?</a>
            <div class="line"></div>
-                <input type="button"  value="Create New Account" class="button button1 butefct"> <br><br>
+                <input type="button"  value="Create New Account" (click)="reg()" class="button button1 butefct"> <br><br>
 
         </div>
         </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
 }
 
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -37,7 +38,6 @@ pwdChange(event:any){
 
 // login(a:any,p:any){
   login(){
-  alert("Login clicked")
   var acno=this.accno;
   // var acno=a.value;
   var pswd=this.pswd;
@@ -46,6 +46,7 @@ pwdChange(event:any){
   if(acno in users){
     if(pswd==users[acno]["password"]){
       alert("login successfull")
+      this.router.navigateByUrl("dashboard")
     }
     else{
       alert("failed")
@@ -54,5 +55,8 @@ pwdChange(event:any){
 else{
   alert("invalid")
 }
+}
+reg(){
+  this.router.navigateByUrl("register")
 }
 }
