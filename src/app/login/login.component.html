@@ -9,10 +9,12 @@
 
 
 
-            <input id="accnotext" type="text" class="text" [value]="accno" (change)="accChange($event)" placeholder="Account number"><br><br>
+            <!-- <input id="accnotext" type="text" class="text" [value]="accno" (change)="accChange($event)" placeholder="Account number"><br><br> -->
             <!-- <input id="accnotext" type="text" class="text" [value]="acno" #accno placeholder="Account number"><br><br> -->
+            <input id="accnotext" type="text" class="text" [value]="accno" [(ngModel)]="accno" placeholder="Account number"><br><br>
+            <!-- <input id="pwdtext" type="password" class="text"  (change)="pwdChange($event)"  placeholder="Password" ><br> <br> -->
 
-            <input id="pwdtext" type="password" class="text"  (change)="pwdChange($event)"  placeholder="Password" ><br> <br>
+            <input id="pwdtext" type="password" class="text" [(ngModel)]="pswd" placeholder="Password" ><br> <br>
             <!-- <input id="pwdtext" type="password" class="text" #pswd placeholder="Password" ><br> <br> -->
             <input type="button"  (click)="login()" value="Log In" class="button butefct"> <br>
 
