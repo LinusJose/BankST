@@ -8,14 +8,18 @@
                 <h5>{{aim}}</h5> </h4><br>
 
 
+<form (ngSubmit)="reg()"> 
+    <input id="uname" type="text" class="text"  [(ngModel)]="uname" name="uname" placeholder="user name"><br><br>
+    <input id="acno" type="text" class="text"  [(ngModel)]="acno" name="acno" placeholder="Ac Num"><br><br>
 
-            <input id="uname" type="text" class="text"  [(ngModel)]="uname" name="uname" placeholder="user name"><br><br>
-            <input id="acno" type="text" class="text"  [(ngModel)]="acno" name="acno" placeholder="Ac Num"><br><br>
+    <input id="pswd" type="text" class="text"  [(ngModel)]="pswd" name="pwd" placeholder="Password"><br><br>
+   
+<input type="submit"  value="Register"  class="button button1 butefct"> <br><br>
 
-            <input id="pswd" type="text" class="text"  [(ngModel)]="pswd" name="pwd" placeholder="Password"><br><br>
-           
-                <input type="button"  value="Register" (click)="reg()" class="button button1 butefct"> <br><br>
+<a href="">Log In</a>
+</form>
 
+       
         </div>
         </div>
 
