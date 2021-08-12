@@ -5,56 +5,110 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class DataServicesService {
-  uname="";
-  acno="";
-  pswd="";
+  uname = "";
+  acno = "";
+  pswd = "";
 
-  accountDetails:any= {
+  accountDetails: any = {
     1000: { acno: 1000, username: "userone", password: "userone", balance: 50000 },
     1001: { acno: 1001, username: "usertwo", password: "usertwo", balance: 5000 },
     1002: { acno: 1002, username: "userthree", password: "userthree", balance: 10000 },
     1003: { acno: 1003, username: "userfour", password: "userfour", balance: 6000 }
-}
+  }
 
 
-login(acno:any,pswd:any){
+  login(acno: any, pswd: any) {
 
-  if(acno in this.accountDetails){
-    if(pswd==this.accountDetails[acno]["password"]){
-      alert("login successfull")
-      return true;
+    if (acno in this.accountDetails) {
+      if (pswd == this.accountDetails[acno]["password"]) {
+        alert("login successfull")
+        return true;
+      }
+      else {
+        alert("failed")
+        return false;
+
+      }
     }
-    else{
-      alert("failed")
+  }
+
+
+  reg(uname: any, acno: any, pswd: any) {
+
+
+    // let user = this.dataserve.accountDetails;
+    if (acno in this.accountDetails) {
       return false;
 
     }
-  }
-}
+    else {
+      this.accountDetails[acno] = {
+        acno,
+        username: uname,
+        password: pswd,
+        balance: 0
+      }
+      return true;
 
 
-reg(uname:any,acno:any,pswd:any) {
- 
-
-  // let user = this.dataserve.accountDetails;
-  if (acno in this.accountDetails) {
-    return false;
-    
-  }
-  else {
-    this.accountDetails[acno] = {
-      acno,
-      username: uname,
-      password: pswd,
-      balance: 0
     }
-    return true;
-   
 
   }
+  deposit(accno: any, pswd: any, amt: any) {
+    var amount = parseInt(amt) //to do stringify the amount from string to integer.
+    let user = this.accountDetails;
+    if (accno in user) {
+      if (pswd == this.accountDetails[accno]["password"]) {
+        user[accno]["balance"] += amount;
+        return user[accno]["balance"];
 
+      }
+
+      else {
+        alert("invalid password")
+        return false;
+      }
+
+    }
+    else {
+      alert("invalid account")
+      return false;
+    }
+  }
+
+
+  withdraw(accno: any, pswd: any, amt: any) {
+
+    var amount = parseInt(amt) //to do stringify the amount from string to integer.
+    let user = this.accountDetails;
+    if (accno in user) {
+      if (pswd == user[accno]["password"]) {
+
+       if(user[accno]["balance"] > amount){
+
+        user[accno]["balance"] -= amount;
+
+        return user[accno]["balance"];
+
+      }
+
+      else {
+        alert("insufficient balance")
+        return false;
+      }
+    }
+
+    else {
+      alert("incorrect password")
+      return false;
+    }
+  }
+
+else{
+  alert("invalid account")
+  return false;
+}
+  }
 }
 
-
-  constructor(private router:Router) { }
-}
+   
