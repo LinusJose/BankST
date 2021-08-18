@@ -8,12 +8,15 @@
                 <h5>{{aim}}</h5> </h4><br>
 
 
-<form (ngSubmit)="reg()"> 
-    <input id="uname" type="text" class="text"  [(ngModel)]="uname" name="uname" placeholder="user name"><br><br>
-    <input id="acno" type="text" class="text"  [(ngModel)]="acno" name="acno" placeholder="Ac Num"><br><br>
+<form [formGroup]="registerForm" (ngSubmit)="reg()"> 
+    <input id="uname" type="text" class="text"  formControlName="uname" name="uname" placeholder="user name"><br><br>
+ <div *ngIf="(registerForm.get('uname')?.touched || registerForm.get('uname')?.dirty)&& registerForm.get('uname')?.errors " class="error">Invalid Username</div>   
+    <input id="acno" type="text" class="text"  formControlName="acno" name="acno" placeholder="Ac Num"><br><br>
+    <div *ngIf="(registerForm.get('acno')?.touched || registerForm.get('acno')?.dirty)&& registerForm.get('acno')?.errors " class="error">Invalid Acount number</div>   
 
-    <input id="pswd" type="text" class="text"  [(ngModel)]="pswd" name="pwd" placeholder="Password"><br><br>
-   
+    <input id="pswd" type="text" class="text"  formControlName="pswd" name="pwd" placeholder="Password"><br><br>
+    <div *ngIf="(registerForm.get('pswd')?.touched || registerForm.get('pswd')?.dirty)&& registerForm.get('pswd')?.errors " class="error">Invalid Password</div>   
+
 <input type="submit"  value="Register"  class="button button1 butefct"> <br><br>
 
 <a href="">Log In</a>

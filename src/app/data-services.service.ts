@@ -18,9 +18,11 @@ export class DataServicesService {
 
 
   login(acno: any, pswd: any) {
+    let user = this.accountDetails;
 
-    if (acno in this.accountDetails) {
-      if (pswd == this.accountDetails[acno]["password"]) {
+
+    if (acno in user) {
+      if (pswd == user[acno]["password"]) {
         alert("login successfull")
         return true;
       }
@@ -36,8 +38,8 @@ export class DataServicesService {
   reg(uname: any, acno: any, pswd: any) {
 
 
-    // let user = this.dataserve.accountDetails;
-    if (acno in this.accountDetails) {
+    let user = this.accountDetails;
+    if (acno in user) {
       return false;
 
     }
@@ -54,6 +56,7 @@ export class DataServicesService {
     }
 
   }
+
   deposit(accno: any, pswd: any, amt: any) {
     var amount = parseInt(amt) //to do stringify the amount from string to integer.
     let user = this.accountDetails;
