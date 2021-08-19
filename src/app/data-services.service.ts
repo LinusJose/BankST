@@ -8,6 +8,7 @@ export class DataServicesService {
   uname = "";
   acno = "";
   pswd = "";
+  currentUser="";
 
   accountDetails: any = {
     1000: { acno: 1000, username: "userone", password: "userone", balance: 50000 },
@@ -15,7 +16,29 @@ export class DataServicesService {
     1002: { acno: 1002, username: "userthree", password: "userthree", balance: 10000 },
     1003: { acno: 1003, username: "userfour", password: "userfour", balance: 6000 }
   }
+constructor(){
+  this.getDetails();
+}
 
+  saveDetails(){
+    localStorage.setItem("accountDetails",JSON.stringify(this.accountDetails))
+    if(this.currentUser){
+      localStorage.setItem("currentUser",JSON.stringify(this.currentUser))
+
+    }
+    
+
+  }
+  getDetails(){
+    if(localStorage.getItem("accountDetails")){
+      this.accountDetails=JSON.parse (localStorage.getItem("accountDetails") ||'')
+
+    }
+if(localStorage.getItem("currentUser")){
+  this.currentUser=JSON.parse (localStorage.getItem ("currentUser")||'')
+
+}
+  }
 
   login(acno: any, pswd: any) {
     let user = this.accountDetails;
@@ -24,6 +47,8 @@ export class DataServicesService {
     if (acno in user) {
       if (pswd == user[acno]["password"]) {
         alert("login successfull")
+        this.currentUser=user[acno]["username"];
+        this.saveDetails();
         return true;
       }
       else {
@@ -50,6 +75,7 @@ export class DataServicesService {
         password: pswd,
         balance: 0
       }
+      this.saveDetails();
       return true;
 
 
@@ -63,6 +89,7 @@ export class DataServicesService {
     if (accno in user) {
       if (pswd == this.accountDetails[accno]["password"]) {
         user[accno]["balance"] += amount;
+      this.saveDetails();
         return user[accno]["balance"];
 
       }
@@ -90,6 +117,7 @@ export class DataServicesService {
        if(user[accno]["balance"] > amount){
 
         user[accno]["balance"] -= amount;
+        this.saveDetails();
 
         return user[accno]["balance"];
 

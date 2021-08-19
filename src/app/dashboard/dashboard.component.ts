@@ -9,7 +9,7 @@ import { DataServicesService } from '../data-services.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  user="user1";
+  user=this.dataserve.currentUser;
 
 
   depositForm = this.fb.group({
